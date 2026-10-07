@@ -1,0 +1,13 @@
+name: BedrockUI
+options:
+  bundleIdPrefix: com.natha
+targets:
+  BedrockUI:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources: [BedrockUI]
+    settings:
+      GENERATE_INFOPLIST_FILE: YES
+      INFOPLIST_KEY_UILaunchScreen_Generation: YES
+      PRODUCT_NAME: "Bedrock UI"
