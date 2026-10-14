@@ -6,6 +6,11 @@ struct CanvasView: View {
   var body: some View {
     GeometryReader { geo in
       ElementBox(element: root, parent: geo.size)
+        .frame(
+          width: geo.size.width,
+          height: geo.size.height,
+          alignment: ElementBox.alignment(root.anchor)
+        )
     }
     .background(Color(white: 0.12))
   }
@@ -29,10 +34,29 @@ struct ElementBox: View {
         .padding(4)
       ForEach(element.children) { child in
         ElementBox(element: child, parent: mine)
+          .frame(
+            width: mine.width,
+            height: mine.height,
+            alignment: Self.alignment(child.anchor)
+          )
       }
     }
     .frame(width: w, height: h)
     .offset(x: element.offset[0], y: element.offset[1])
+  }
+
+  static func alignment(_ a: String) -> Alignment {
+    switch a {
+    case "top_left": return .topLeading
+    case "top_middle": return .top
+    case "top_right": return .topTrailing
+    case "left_middle": return .leading
+    case "right_middle": return .trailing
+    case "bottom_left": return .bottomLeading
+    case "bottom_middle": return .bottom
+    case "bottom_right": return .bottomTrailing
+    default: return .center
+    }
   }
 
   static func parse(_ s: String, _ total: CGFloat) -> CGFloat {
