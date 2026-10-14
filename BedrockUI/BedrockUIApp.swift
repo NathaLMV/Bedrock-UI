@@ -4,22 +4,22 @@ import SwiftUI
 struct BedrockUIApp: App {
   var body: some Scene {
     WindowGroup {
-      ScrollView {
-        Text(sample)
-          .font(.system(.footnote, design: .monospaced))
-          .padding()
-      }
+      CanvasView(root: sample)
     }
   }
 
-  var sample: String {
-    let root = Element(
-      name: "main_panel",
-      type: .panel,
-      children: [
-        Element(name: "title", type: .label)
-      ]
-    )
-    return JsonUiExporter.json(namespace: "bedrock_ui", root: root) ?? "error"
+  var sample: Element {
+    var title = Element(name: "title", type: .label)
+    title.size = ["80%", "20%"]
+    title.anchor = "top_middle"
+
+    var body = Element(name: "body", type: .panel)
+    body.size = ["80%", "50%"]
+    body.offset = [0, 40]
+
+    var root = Element(name: "main_panel", type: .panel)
+    root.size = ["90%", "80%"]
+    root.children = [title, body]
+    return root
   }
 }
