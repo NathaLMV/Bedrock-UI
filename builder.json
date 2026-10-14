@@ -1,0 +1,18 @@
+{
+  "project": "Bedrock-UI",
+  "platform": "ios",
+  "github": {
+    "owner": "NathaLMV",
+    "repo": "Bedrock-UI"
+  },
+  "provider": "github",
+  "codemagic": {},
+  "bitrise": {},
+  "ios": {},
+  "flutter": {
+    "watch": {}
+  },
+  "reactNative": {},
+  "kmp": {},
+  "mobai": {}
+}
