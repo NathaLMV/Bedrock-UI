@@ -8,21 +8,10 @@ struct BedrockUIApp: App {
     WindowGroup {
       VStack(spacing: 0) {
         CanvasView(state: state)
-        Text(selectedName)
-          .font(.footnote)
-          .foregroundColor(.white)
-          .frame(maxWidth: .infinity)
-          .padding()
-          .background(Color(white: 0.2))
+        PropertiesPanel(state: state)
+          .frame(height: 300)
       }
     }
-  }
-
-  var selectedName: String {
-    guard let id = state.selectedID, let e = state.find(id) else {
-      return "Toca una caja"
-    }
-    return "\(e.name) (\(e.type.rawValue))"
   }
 
   static func sample() -> Element {
